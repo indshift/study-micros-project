@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-python
+spec:
+  selector:
+    matchLabels:
+      app: hello-python
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: hello-python
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: hello-python
+          image: vlzregiztry/superlab1:latest
+          #imagePullPolicy: Never
+          ports:
+            - containerPort: 5001
+          readinessProbe:
+            httpGet:
+              path: /probe
+              port: 5001
+            failureThreshold: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /probe
+              port: 5001
+            failureThreshold: 3 #значение равно значению по умолчанию
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /probe
+              port: 5001
+            failureThreshold: 30
+            periodSeconds: 10
+
