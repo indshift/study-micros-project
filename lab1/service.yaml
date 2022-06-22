@@ -7,6 +7,6 @@ spec:
     app: hello-python
   ports:
     - protocol: "TCP"
-      port: 6000
+      port: 8000
       targetPort: 5001
 #  type: LoadBalancer #NodePort #попробовать тут LoadBalancer

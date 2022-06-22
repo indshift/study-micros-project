@@ -9,7 +9,7 @@ spec:
     service:
       name: hello-python-service
       port:
-        number: 5001
+        number: 8000
   rules:
     - host: arch.homework
       http:
@@ -21,15 +21,15 @@ spec:
               service:
                 name: hello-python-service
                 port:
-                  number: 5001
+                  number: 8000
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: hello-python-service
                 port:
-                  number: 5001
-
+                  number: 8000
+  ingressClassName: nginx
 
 #apiVersion: networking.k8s.io/v1
 #kind: Ingress
